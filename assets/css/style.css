@@ -83,7 +83,7 @@ input.form-control {
     height: 40px;
 }
 
-/* Offcanvas Toggler - Visible on ALL screens now */
+/* Offcanvas Toggler */
 .navbar-toggler {
     border: none;
     padding: 0;
@@ -96,7 +96,6 @@ input.form-control {
 /* Offcanvas Menu */
 .offcanvas {
     z-index: 100000;
-    /* Super high z-index */
 }
 
 .offcanvas-backdrop {
@@ -119,7 +118,6 @@ input.form-control {
     width: 100%;
     object-fit: cover;
     filter: brightness(0.7);
-    /* Slightly brighter than before */
 }
 
 .hero-caption {
@@ -143,21 +141,17 @@ input.form-control {
 .category-pills-wrapper {
     display: flex;
     flex-wrap: nowrap;
-    /* Prevent wrapping implies scrolling or single line */
     overflow-x: auto;
     padding: 15px 5px;
     gap: 15px;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    /* Firefox */
 }
 
 .category-pills-wrapper::-webkit-scrollbar {
     display: none;
-    /* Safari and Chrome */
 }
 
-/* Pill Styling */
 .category-pill {
     background: white;
     padding: 10px 20px;
@@ -225,7 +219,6 @@ input.form-control {
 .section-padding {
     padding: 80px 0;
     margin-top: 40px;
-    /* Push down sections */
 }
 
 /* Logic for Quantity Buttons - Specific Overrides with Color */
@@ -245,7 +238,6 @@ input.form-control {
     border-radius: 0;
     padding: 8px 14px;
     color: white;
-    /* Default text color for colored buttons */
     box-shadow: none;
     margin: 0;
     font-size: 1.1rem;
@@ -286,7 +278,6 @@ input.form-control {
 
 /* --- Cart Page Specifics --- */
 .cart-page-wrapper {
-    /* Padding to ensure content doesn't hit edges */
     padding: 0 20px;
 }
 
@@ -370,5 +361,21 @@ footer a:hover {
     .container {
         padding-left: 15px;
         padding-right: 15px;
+    }
+
+    /* Cart Scroll Fix */
+    #cart-items {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        /* Forces row content to stay in line */
+        padding-bottom: 15px;
+    }
+
+    #cart-items>div {
+        display: flex !important;
+        min-width: 650px;
+        /* Force minimum width to trigger scroll */
+        white-space: normal;
     }
 }
