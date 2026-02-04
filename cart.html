@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart | Fatima Foods</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid px-lg-4 d-flex justify-content-between align-items-center">
+            <a class="navbar-brand m-0" href="index.html">
+                <img src="assets/images/logo.png" alt="Fatima Foods">
+            </a>
+            <div class="d-none d-lg-flex gap-4">
+                <a class="nav-link text-dark fw-bold" href="index.html"><i class="fas fa-home text-success me-1"></i>
+                    Home</a>
+                <a class="nav-link text-dark fw-bold" href="products.html"><i
+                        class="fas fa-store text-success me-1"></i> Market</a>
+                <a class="nav-link text-dark fw-bold" href="special-order.html"><i
+                        class="fas fa-concierge-bell text-success me-1"></i> Special Order</a>
+            </div>
+            <button class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar">
+                <span class="fas fa-bars fa-2x text-success"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Offcanvas Menu (Synced with Index) -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
+        <div class="offcanvas-header">
+            <div class="d-flex align-items-center">
+                <img src="assets/images/logo.png" alt="Logo" height="40" class="me-2">
+                <h5 class="offcanvas-title premium-font text-success m-0">Fatima Foods</h5>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item mb-2">
+                    <a class="nav-link fs-5" href="index.html">
+                        <i class="fas fa-home text-success me-3"></i> Home
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link fs-5" href="products.html">
+                        <i class="fas fa-store text-success me-3"></i> All Products
+                    </a>
+                </li>
+                <li class="nav-item dropdown mb-2">
+                    <a class="nav-link dropdown-toggle fs-5" href="#" role="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-th-list text-success me-3"></i> Categories
+                    </a>
+                    <ul class="dropdown-menu border-0 shadow ms-3">
+                        <li><a class="dropdown-item py-2" href="products.html?category=rice">Rice</a></li>
+                        <li><a class="dropdown-item py-2" href="products.html?category=yams">Yams & Tubers</a></li>
+                        <li><a class="dropdown-item py-2" href="products.html?category=beans">Beans</a></li>
+                        <li><a class="dropdown-item py-2" href="products.html?category=spices">Spices & Oils</a></li>
+                        <li><a class="dropdown-item py-2" href="products.html?category=meat">Meat & Proteins</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link fs-5" href="special-order.html">
+                        <i class="fas fa-concierge-bell text-success me-3"></i> Special Order
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container section-padding cart-page-wrapper" style="margin-top: 50px;">
+        <h2 class="mb-4 premium-font border-bottom pb-3">Your Cart</h2>
+
+        <div class="row g-5">
+            <div class="col-lg-8">
+                <div id="cart-items">
+                    <!-- JS Injected -->
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="bg-white p-4 rounded shadow-sm sticky-top" style="top: 100px;">
+                    <h5 class="mb-3 premium-font">Order Summary</h5>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Subtotal</span>
+                        <span id="subtotal" class="fw-bold">₦0</span>
+                    </div>
+                    <small class="text-muted d-block mb-3">Delivery fee calculated at checkout.</small>
+                    <hr>
+                    <div class="d-flex justify-content-between mb-4">
+                        <span class="fs-5 fw-bold">Total</span>
+                        <span id="total" class="fs-5 fw-bold text-success">₦0</span>
+                    </div>
+                    <a href="checkout.html" class="btn btn-primary w-100 py-3 rounded-pill fw-bold">Proceed to
+                        Checkout</a>
+                    <a href="products.html"
+                        class="btn btn-outline-secondary w-100 py-2 rounded-pill mt-3 btn-sm">Continue Shopping</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="mt-auto">
+        <div class="container text-center">
+            <p class="small mb-0 opacity-50 text-white">&copy; 2026 Fatima Foods.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

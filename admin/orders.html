@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Orders | Fatima Foods</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img src="../assets/images/logo.png" alt="Fatima Foods Logo" class="img-fluid">
+            </div>
+            <ul class="list-unstyled components">
+                <li><a href="index.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li class="active"><a href="orders.html"><i class="fas fa-shopping-cart"></i> Orders</a></li>
+                <li><a href="products.html"><i class="fas fa-utensils"></i> Products</a></li>
+                <li><a href="categories.html"><i class="fas fa-list"></i> Categories</a></li>
+                <li><a href="sales.html"><i class="fas fa-chart-line"></i> Sales & Revenue</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                <li class="mt-5"><a href="../index.html" class="text-danger"><i class="fas fa-sign-out-alt"></i>
+                        Logout</a></li>
+            </ul>
+        </nav>
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg admin-navbar">
+            <div class="container-fluid">
+                <button type="button" id="sidebarCollapse" class="btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="ms-auto d-flex align-items-center">
+                    <span class="me-3 fw-bold d-none d-md-block">Manage Orders</span>
+                    <img src="https://ui-avatars.com/api/?name=Admin&background=1F7A3D&color=fff" class="rounded-circle"
+                        width="35" alt="Admin">
+                </div>
+            </div>
+        </nav>
+
+        <!-- Page Content -->
+        <div id="content">
+            <div class="container-fluid">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="premium-font mb-0">Order Management</h2>
+                </div>
+
+                <div class="card premium-card p-0">
+                    <div class="table-responsive p-2">
+                        <table id="ordersTable" class="table premium-table table-hover" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Date</th>
+                                    <th>Customer</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#ORD-001</td>
+                                    <td>Oct 24, 2023</td>
+                                    <td>John Doe</td>
+                                    <td>₦5,500</td>
+                                    <td><span class="badge badge-pending">Pending</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-primary ms-1 view-order-btn"
+                                            data-bs-toggle="modal" data-bs-target="#orderModal"
+                                            data-id="ORD-001">Details</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-002</td>
+                                    <td>Oct 23, 2023</td>
+                                    <td>Jane Smith</td>
+                                    <td>₦12,000</td>
+                                    <td><span class="badge badge-approved">Approved</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-primary ms-1 view-order-btn"
+                                            data-bs-toggle="modal" data-bs-target="#orderModal"
+                                            data-id="ORD-002">Details</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-003</td>
+                                    <td>Oct 22, 2023</td>
+                                    <td>Mike Ross</td>
+                                    <td>₦8,500</td>
+                                    <td><span class="badge badge-declined">Declined</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-primary ms-1 view-order-btn"
+                                            data-bs-toggle="modal" data-bs-target="#orderModal"
+                                            data-id="ORD-003">Details</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Modal (Same as before but ensured styling is correct) -->
+    <div class="modal fade" id="orderModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Order Details <span id="modalOrderId"></span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h6>Customer Information</h6>
+                            <p class="mb-1"><strong>Name:</strong> John Doe</p>
+                            <p class="mb-1"><strong>Phone:</strong> +234 801 234 5678</p>
+                            <p class="mb-1"><strong>Email:</strong> john@example.com</p>
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            <h6>Order Info</h6>
+                            <p class="mb-1"><strong>Date:</strong> Oct 24, 2023</p>
+                            <div class="mb-3">
+                                <strong>Status:</strong>
+                                <select class="form-select form-select-sm d-inline-block w-auto ms-2">
+                                    <option value="pending" selected>Pending</option>
+                                    <option value="processing">Processing</option>
+                                    <option value="approved">Approved</option>
+                                    <option value="delivered">Delivered</option>
+                                    <option value="declined">Declined</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <h6 class="mb-3">Order Items</h6>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Qty</th>
+                                    <th>Price</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Jollof Rice</td>
+                                    <td>2</td>
+                                    <td>₦2,000</td>
+                                    <td>₦4,000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="../assets/js/admin.js"></script>
+    <script>
+        $(document).ready(function () {
+            var table = $('#ordersTable').DataTable({
+                responsive: true,
+                "order": [[0, "desc"]],
+                language: { search: "_INPUT_", searchPlaceholder: "Search orders..." }
+            });
+        });
+    </script>
+</body>
+
+</html>

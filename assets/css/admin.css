@@ -1,0 +1,394 @@
+:root {
+    --sidebar-width: 260px;
+    --sidebar-bg: #111111;
+    --sidebar-text: #ffffff;
+    --sidebar-hover: #1F7A3D;
+    --content-bg: #F9F9F9;
+    --primary-green: #1F7A3D;
+    --header-height: 70px;
+}
+
+body {
+    background-color: var(--content-bg);
+    overflow-x: hidden;
+    padding-top: var(--header-height);
+    /* Ensure content doesn't hide behind fixed header */
+}
+
+/* --- Layout Structure --- */
+#wrapper {
+    display: flex;
+    width: 100%;
+}
+
+/* Sidebar Styling */
+#sidebar {
+    min-width: var(--sidebar-width);
+    width: var(--sidebar-width);
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    transition: all 0.3s;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1040;
+    /* Higher than navbar default 1030 if needed, but usually sidebar is under navbar or sidebar is full height? User wants Standard Admin */
+    overflow-y: auto;
+}
+
+/* Adjust Sidebar Header */
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: var(--sidebar-bg);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1045;
+}
+
+#sidebar .sidebar-header img {
+    max-width: 120px;
+    /* Reduced Logo Size */
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* Nav Links */
+#sidebar ul.components {
+    padding: 20px 0;
+}
+
+#sidebar ul li {
+    padding: 5px 15px;
+    /* Reduced padding */
+}
+
+#sidebar ul li a {
+    color: var(--sidebar-text);
+    text-decoration: none;
+    display: block;
+    padding: 15px 20px;
+    /* Much larger padding for mobile */
+    border-radius: 0;
+    /* Remove rounded corners */
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    /* More spacing between items */
+}
+
+#sidebar ul li a i {
+    margin-right: 12px;
+    width: 20px;
+    text-align: center;
+}
+
+#sidebar ul li a:hover,
+#sidebar ul li.active>a {
+    background: var(--sidebar-hover);
+    color: #fff;
+}
+
+/* --- Fixed Top Navbar --- */
+.admin-navbar {
+    background: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    /* width calculated based on sidebar presence */
+    left: var(--sidebar-width);
+    width: auto;
+    z-index: 1030;
+    height: var(--header-height);
+    transition: all 0.3s;
+}
+
+/* Navbar Toggle Button */
+#sidebarCollapse {
+    background: transparent;
+    border: none;
+    color: var(--primary-green);
+    font-size: 1.5rem;
+    padding: 0;
+    margin-right: 15px;
+    display: none;
+    /* Hidden on desktop by default if sidebar is always there */
+}
+
+/* Main Content Area */
+#content {
+    width: 100%;
+    margin-left: var(--sidebar-width);
+    /* Push content */
+    padding: 30px;
+    transition: all 0.3s;
+    min-height: 100vh;
+}
+
+/* --- Components & Elements --- */
+
+/* Buttons - Sleeker */
+.btn {
+    border-radius: 8px;
+    padding: 8px 18px;
+    /* Reduced padding */
+    font-size: 0.9rem;
+}
+
+.btn-lg {
+    padding: 10px 25px;
+    font-size: 1rem;
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+}
+
+/* Cards */
+.premium-card {
+    background: #fff;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+/* Tables */
+.premium-table {
+    width: 100% !important;
+    white-space: nowrap;
+}
+
+.premium-table thead th {
+    background: #f8f9fa;
+    border-bottom: 2px solid #e9ecef !important;
+    padding: 12px 15px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #495057;
+}
+
+.premium-table tbody td {
+    padding: 12px 15px;
+    vertical-align: middle;
+    font-size: 0.9rem;
+}
+
+/* Stats Cards */
+.stat-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+    border: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.stat-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+/* Password Input Group - No Border Radius */
+.password-group {
+    border-radius: 0 !important;
+    /* Force rectangular */
+}
+
+.password-group .form-control {
+    border-right: none;
+    border-radius: 0 !important;
+    /* No rounded corners */
+    box-shadow: none !important;
+}
+
+.password-group .form-control:focus {
+    border-color: #dee2e6;
+    z-index: 0;
+}
+
+.password-group .input-group-text {
+    background-color: #fff;
+    border-left: none;
+    border-radius: 0 !important;
+    /* No rounded corners */
+    color: var(--primary-green);
+    cursor: pointer;
+}
+
+.password-group:focus-within .form-control,
+.password-group:focus-within .input-group-text {
+    border-color: var(--primary-green);
+    box-shadow: none;
+}
+
+/* Override Bootstrap input-group defaults */
+.input-group.password-group {
+    border-radius: 0 !important;
+}
+
+.input-group.password-group .form-control,
+.input-group.password-group .input-group-text {
+    border-radius: 0 !important;
+}
+
+/* Badges - All Black Theme */
+.badge {
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-weight: 500;
+    background: #111111 !important;
+    color: white !important;
+}
+
+.badge-pending,
+.badge-approved,
+.badge-declined,
+.badge-refunded {
+    background: #111111 !important;
+    color: white !important;
+}
+
+/* --- Mobile / Offcanvas Styles --- */
+@media (max-width: 991px) {
+
+    /* Layout Reset for Mobile */
+    #sidebar {
+        margin-left: -260px;
+        /* Hide sidebar offscreen left */
+        left: 0;
+        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    #content {
+        margin-left: 0;
+        /* Full width content */
+        padding: 20px;
+    }
+
+    .admin-navbar {
+        left: 0;
+        /* Full width navbar */
+        width: 100%;
+        padding: 10px 15px;
+    }
+
+    #sidebarCollapse {
+        display: block;
+        /* Show menu toggle */
+    }
+
+    /* Active Sidebar State (OffCanvas Overlay) */
+    #sidebar.active {
+        margin-left: 0;
+        /* Slide in */
+    }
+
+    /* Overlay Backdrop */
+    .overlay {
+        display: none;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1035;
+        /* Behind sidebar (1040), Above navbar (1030) */
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+        top: 0;
+        left: 0;
+    }
+
+    .overlay.active {
+        display: block;
+        opacity: 1;
+    }
+
+    /* Sales Filters Stacking on Mobile */
+    .sales-filter-container {
+        flex-direction: column;
+        align-items: stretch !important;
+    }
+
+    .sales-filter-container .input-group {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .sales-filter-container .btn {
+        width: 100%;
+        /* Full width buttons for easy tapping */
+        margin-bottom: 10px;
+    }
+
+    /* Header alignment adjustments */
+    .premium-font {
+        font-size: 1.5rem;
+    }
+
+    /* Responsive Table adjustments */
+    .dataTables_wrapper .row {
+        flex-direction: column;
+    }
+
+    .dataTables_length,
+    .dataTables_filter {
+        text-align: left !important;
+        margin-bottom: 10px;
+    }
+}
+
+/* Custom Utilities */
+.icon-pending {
+    background: rgba(230, 179, 37, 0.1);
+    color: #E6B325;
+}
+
+.icon-approved {
+    background: rgba(31, 122, 61, 0.1);
+    color: #1F7A3D;
+}
+
+.icon-revenue {
+    background: rgba(0, 123, 255, 0.1);
+    color: #007bff;
+}
+
+.icon-orders {
+    background: rgba(108, 117, 125, 0.1);
+    color: #6c757d;
+}
+
+.text-primary-green {
+    color: var(--primary-green);
+}
+
+.bg-primary-green {
+    background-color: var(--primary-green) !important;
+    color: white;
+}

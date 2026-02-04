@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | Fatima Foods</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid px-lg-4 d-flex justify-content-between align-items-center">
+            <!-- Brand -->
+            <a class="navbar-brand m-0" href="index.html">
+                <img src="assets/images/logo.png" alt="Fatima Foods">
+            </a>
+
+            <!-- Desktop Links -->
+            <div class="d-none d-lg-flex gap-4">
+                <a class="nav-link text-dark fw-bold" href="index.html"><i class="fas fa-home text-success me-1"></i>
+                    Home</a>
+                <a class="nav-link text-dark fw-bold" href="products.html"><i
+                        class="fas fa-store text-success me-1"></i> Market</a>
+                <a class="nav-link text-dark fw-bold" href="special-order.html"><i
+                        class="fas fa-concierge-bell text-success me-1"></i> Special Order</a>
+            </div>
+
+            <!-- Toggler -->
+            <button class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar">
+                <span class="fas fa-bars fa-2x text-success"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Offcanvas Menu (Synced with Index) -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
+        <div class="offcanvas-header">
+            <div class="d-flex align-items-center">
+                <img src="assets/images/logo.png" alt="Logo" height="40" class="me-2">
+                <h5 class="offcanvas-title premium-font text-success m-0">Fatima Foods</h5>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item mb-2">
+                    <a class="nav-link fs-5" href="index.html">
+                        <i class="fas fa-home text-success me-3"></i> Home
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link fs-5" href="products.html">
+                        <i class="fas fa-store text-success me-3"></i> All Products
+                    </a>
+                </li>
+                <li class="nav-item dropdown mb-2">
+                    <a class="nav-link dropdown-toggle fs-5" href="#" role="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-th-list text-success me-3"></i> Categories
+                    </a>
+                    <ul class="dropdown-menu border-0 shadow ms-3">
+                        <li><a class="dropdown-item py-2" href="products.html?category=rice">Rice</a></li>
+                        <li><a class="dropdown-item py-2" href="products.html?category=yams">Yams & Tubers</a></li>
+                        <li><a class="dropdown-item py-2" href="products.html?category=beans">Beans</a></li>
+                        <li><a class="dropdown-item py-2" href="products.html?category=spices">Spices & Oils</a></li>
+                        <li><a class="dropdown-item py-2" href="products.html?category=meat">Meat & Proteins</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link fs-5" href="special-order.html">
+                        <i class="fas fa-concierge-bell text-success me-3"></i> Special Order
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container section-padding" style="margin-top: 50px; padding: 0 15px;"> <!-- Safe padding -->
+        <div class="text-center mb-5">
+            <h2 class="display-6 premium-font">Our Market</h2>
+            <p class="text-muted">Browse our fresh selection of quality foodstuff.</p>
+        </div>
+
+        <!-- Filter Pills (Sticky) -->
+        <div class="category-pills-wrapper sticky-top bg-white py-3 mb-4"
+            style="top: 80px; z-index: 1010; border-bottom: 1px solid #f0f0f0;">
+            <div class="category-pill active category-trigger" data-category="all">
+                <i class="fas fa-th-large me-2"></i> All
+            </div>
+            <div class="category-pill category-trigger" data-category="rice">
+                <img src="assets/images/rice.jpg"> Rice
+            </div>
+            <div class="category-pill category-trigger" data-category="yams">
+                <img src="assets/images/yam.jpg"> Yams
+            </div>
+            <div class="category-pill category-trigger" data-category="beans">
+                <img src="assets/images/beans.jpg"> Beans
+            </div>
+            <div class="category-pill category-trigger" data-category="meat">
+                <img src="assets/images/meat.jpg"> Meat
+            </div>
+            <div class="category-pill category-trigger" data-category="spices">
+                <img src="assets/images/spices.jpg"> Spices
+            </div>
+        </div>
+
+        <div class="row g-4 justify-content-center" id="productGrid"> <!-- Centered Grid -->
+            <!-- JS Inject -->
+            <div class="col-12 text-center py-5">
+                <div class="spinner-border text-success" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Cart -->
+    <a href="cart.html" class="floating-cart">
+        <i class="fas fa-shopping-basket"></i>
+        <span class="cart-badge">0</span>
+    </a>
+
+    <!-- Footer -->
+    <footer class="mt-auto">
+        <div class="container text-center">
+            <p class="small mb-0 opacity-50 text-white">&copy; 2026 Fatima Foods.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
