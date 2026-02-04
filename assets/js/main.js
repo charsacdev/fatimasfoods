@@ -353,7 +353,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 msg += `\n*TOTAL AMOUNT: ₦${total.toLocaleString()}*\n`;
                 msg += `(Payment Status: Pending Verification)`;
 
-                const phone = '2348122656972';
+                const phone = '2349068257514';
                 const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
 
                 localStorage.removeItem('fatima_cart');
